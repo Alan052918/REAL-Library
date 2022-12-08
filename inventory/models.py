@@ -58,7 +58,7 @@ class Rental(models.Model):
     expected_return = models.DateField("expected return date")
     actual_return = models.DateField("actual return date")
 
-    copy = models.ForeignKey(Copy, on_delete=models.RESTRICT)
+    copy = models.ForeignKey(Copy, on_delete=models.RESTRICT, null=True)
 
     class Meta:
         indexes = [models.Index(fields=["id"])]
