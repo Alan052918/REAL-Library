@@ -6,7 +6,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
@@ -15,7 +15,7 @@ class Book(models.Model):
 
     topic = models.ForeignKey(Topic, on_delete=models.RESTRICT)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
@@ -28,7 +28,7 @@ class Author(models.Model):
     state = models.CharField(max_length=2)
     zipcode = models.IntegerField()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
@@ -39,7 +39,7 @@ class BookAuthor(models.Model):
     class Meta:
         unique_together = (("book", "author"),)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.book} - {self.author}"
 
 
@@ -48,7 +48,7 @@ class Copy(models.Model):
 
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"book {self.book}"
 
 
@@ -63,7 +63,7 @@ class Rental(models.Model):
     class Meta:
         indexes = [models.Index(fields=["id"])]
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"
 
 
@@ -76,7 +76,7 @@ class Invoice(models.Model):
     class Meta:
         indexes = [models.Index(fields=["id"])]
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"
 
 
@@ -89,5 +89,5 @@ class Payment(models.Model):
 
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"

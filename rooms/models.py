@@ -9,14 +9,14 @@ class Customer(models.Model):
     identity_type = models.CharField(max_length=1)
     identity_number = models.CharField(max_length=15)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
 class Room(models.Model):
     capacity = models.IntegerField()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"
 
 
@@ -30,5 +30,5 @@ class RoomCustomer(models.Model):
     class Meta:
         unique_together = (("room", "customer"),)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"room: {self.room} customer: {self.customer}"
