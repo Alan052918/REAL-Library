@@ -1,6 +1,7 @@
 from django.contrib import auth, messages
 from django.shortcuts import redirect, render
 
+from .decorators import unauthenticated_user
 from .forms import CustomerCreationForm
 
 
@@ -8,10 +9,8 @@ def index(request):
     return render(request, "home/index.html")
 
 
+@unauthenticated_user
 def signup(request):
-    if request.user.is_authenticated:
-        return redirect("/")
-
     form = CustomerCreationForm()
 
     if request.method == "POST":
@@ -24,10 +23,8 @@ def signup(request):
     return render(request, "home/signup.html", {"form": form})
 
 
+@unauthenticated_user
 def login(request):
-    if request.user.is_authenticated:
-        return redirect("/")
-
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -41,6 +38,7 @@ def login(request):
     return render(request, "home/login.html")
 
 
+@unauthenticated_user
 def logout(request):
     auth.logout(request)
     return redirect("/")
