@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Inventory</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1>Welcome to inventory</h1>
+    <div class="container">
+      <a href="/inventory/topics/">Topic list</a>
+      {% if topic_list %}
+      <ul>
+        {% for topic in topic_list %}
+        <li>
+          <a href="/inventory/topics/{{ topic.id }}/">{{ topic.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="container">
+      <a href="/inventory/books/">Book list</a>
+      {% if book_list %}
+      <ul>
+        {% for book in book_list %}
+        <li>
+          <a href="/inventory/books/{{ book.id }}/">{{ book.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="container">
+      <a href="/inventory/authors/">Authors list</a>
+      {% if author_list %}
+      <ul>
+        {% for author in author_list %}
+        <li>
+          <a href="/inventory/authors/{{ author.id }}/"
+            >{{ author.first_name }} {{ author.last_name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>

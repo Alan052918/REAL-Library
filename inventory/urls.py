@@ -19,4 +19,10 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("topics/", views.topics_view, name="topics"),
+    path("topics/<int:pk>/", views.topic_detail_view, name="topic-detail"),
+    path("books/", views.books_view, name="books"),
+    path("books/<int:pk>/", views.book_detail_view, name="book-detail"),
+    path("authors/", views.authors_view, name="authors"),
+    path("authors/<int:pk>/", views.author_detail_view, name="author-detail"),
 ]

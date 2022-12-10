@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Inventory | Books | {{ book.id }}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1>Book {{ book.id }}</h1>
+    ID: {{ book.id }}
+    <br />
+    Name: {{ book.name }}
+    <br />
+    Topic:
+    <a href="/inventory/topics/{{ book.topic.id }}/">{{ book.topic.name }}</a>
+    <div class="container">
+      Author list:
+      <br />
+      {% if author_list %}
+      <ul>
+        {% for author in author_list %}
+        <li>
+          <a href="/inventory/authors/{{ author.id }}/"
+            >{{ author.first_name }} {{ author.last_name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <hr />
+    <a href="/inventory/books/">All Books</a>
+    <br />
+    <a href="/inventory/">Inventory</a>
+  </body>
+</html>
