@@ -1,7 +1,4 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.utils import timezone
-from django.views import generic
 
 from .models import Exhibition, Seminar, Sponsor, SeminarAuthor, SeminarSponsor
 from inventory.models import Author
