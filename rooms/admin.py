@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Customer, Room
+from .models import Room, RoomCustomer
 
-admin.site.register(Customer)
 admin.site.register(Room)
+admin.site.register(RoomCustomer)

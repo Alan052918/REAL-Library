@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("<int:pk>/", views.room_detail_view, name="room-detail"),
 ]
