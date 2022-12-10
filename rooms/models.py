@@ -1,6 +1,6 @@
 from django.db import models
 
-from account.models import Customer
+from home.models import Customer
 
 
 class Room(models.Model):
