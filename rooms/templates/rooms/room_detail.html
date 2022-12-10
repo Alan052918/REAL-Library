@@ -1,38 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Room Detail</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>Room {{ room.id }}</h1>
-    ID: {{ room.id }}
-    <br />
-    Capacity: {{ room.capacity }}
-    <br />
-    Location: {{ room.location }}
-    <div class="container">
-      Reservation list:
-      <br />
-      {% if room_customers %}
-      <ul>
-        {% for reservation in room_customers %}
-        <li>
-          Date: {{ reservation.date }} Time slot: {{ reservation.time_slot }}
-          Customer:
-          <a href="/account/customers/{{ reservation.customer.id }}/"
-            >{{ reservation.customer.first_name }}</a
-          >
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-    <hr />
-    <a href="/rooms">All rooms</a>
-  </body>
-</html>
+{% extends "main.html" %} {% block content %}
+
+<h1>Room {{ room.id }}</h1>
+ID: {{ room.id }}
+<br />
+Capacity: {{ room.capacity }}
+<br />
+Location: {{ room.location }}
+<div class="container">
+  Reservation list:
+  <br />
+  {% if room_customers %}
+  <ul>
+    {% for reservation in room_customers %}
+    <li>
+      Date: {{ reservation.date }} Time slot: {{ reservation.time_slot }}
+      Customer:
+      <a href="/account/customers/{{ reservation.customer.id }}/"
+        >{{ reservation.customer.first_name }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<hr />
+<a href="/rooms">All rooms</a>
+
+{% endblock content %}

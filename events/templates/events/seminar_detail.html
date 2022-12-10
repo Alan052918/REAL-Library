@@ -1,64 +1,55 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Events | Seminars | {{ seminar.id }}</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>Seminar {{ seminar.id }}</h1>
-    ID: {{ seminar.id }}
-    <br />
-    Name: {{ seminar.name }}
-    <br />
-    Type: {{ seminar.type }}
-    <br />
-    Start Datetime: {{ seminar.start_datetime }}
-    <br />
-    Stop Datetime: {{ seminar.stop_datetime }}
-    <br />
-    <div class="container">
-      Sponsors list:
-      <br />
-      {% if sponsor_list %}
-      <ul>
-        {% for sponsor, amount in sponsor_list %}
-        <li>
-          Sponsor: {% if sponsor.type == "I" %}
-          <a href="/events/sponsors/{{ sponsor.id }}/"
-            >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
-          >
-          {% else %}
-          <a href="/events/sponsors/{{ sponsor.id }}/"
-            >{{ sponsor.first_name }} (Organization)</a
-          >
-          {% endif %} Amount: {{ amount }}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-    <div class="container">
-      Authors list:
-      <br />
-      {% if author_list %}
-      <ul>
-        {% for author in author_list %}
-        <li>
-          <a href="/inventory/authors/{{ author.id }}/"
-            >{{ author.first_name }} {{ author.last_name }}</a
-          >
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-    <hr />
-    <a href="/events/seminars/">All Seminars</a>
-    <br />
-    <a href="/events/">All Events</a>
-  </body>
-</html>
+{% extends "main.html" %} {% block content %}
+
+<h1>Seminar {{ seminar.id }}</h1>
+ID: {{ seminar.id }}
+<br />
+Name: {{ seminar.name }}
+<br />
+Type: {{ seminar.type }}
+<br />
+Start Datetime: {{ seminar.start_datetime }}
+<br />
+Stop Datetime: {{ seminar.stop_datetime }}
+<br />
+<div class="container">
+  Sponsors list:
+  <br />
+  {% if sponsor_list %}
+  <ul>
+    {% for sponsor, amount in sponsor_list %}
+    <li>
+      Sponsor: {% if sponsor.type == "I" %}
+      <a href="/events/sponsors/{{ sponsor.id }}/"
+        >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
+      >
+      {% else %}
+      <a href="/events/sponsors/{{ sponsor.id }}/"
+        >{{ sponsor.first_name }} (Organization)</a
+      >
+      {% endif %} Amount: {{ amount }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<div class="container">
+  Authors list:
+  <br />
+  {% if author_list %}
+  <ul>
+    {% for author in author_list %}
+    <li>
+      <a href="/inventory/authors/{{ author.id }}/"
+        >{{ author.first_name }} {{ author.last_name }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<hr />
+<a href="/events/seminars/">All Seminars</a>
+<br />
+<a href="/events/">All Events</a>
+
+{% endblock content %}

@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Events | Sponsors | {{ sponsor.id }}</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>Sponsor {{ sponsor.id }}</h1>
-    ID: {{ sponsor.id }}
-    <br />
-    First Name: {{ sponsor.first_name }}
-    <br />
-    Last Name: {{ sponsor.last_name }}
-    <br />
-    {% if sponsor.type == "I" %}
-    <div>Type: {{ sponsor.type }} (Individual)</div>
-    {% else %}
-    <div>Type: {{ sponsor.type }} (Organization)</div>
-    {% endif%}
-    <div class="container">
-      Seminar list:
-      <br />
-      {% if seminar_list %}
-      <ul>
-        {% for seminar, amount in seminar_list %}
-        <li>
-          Seminar
-          <a href="/events/seminars/{{ seminar.id }}/">{{ seminar.name }}</a>
-          Amount: {{ amount }}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-    <hr />
-    <a href="/events/sponsors/">All Sponsors</a>
-    <br />
-    <a href="/events/">All Events</a>
-  </body>
-</html>
+{% extends "main.html" %} {% block content %}
+
+<h1>Sponsor {{ sponsor.id }}</h1>
+ID: {{ sponsor.id }}
+<br />
+First Name: {{ sponsor.first_name }}
+<br />
+Last Name: {{ sponsor.last_name }}
+<br />
+{% if sponsor.type == "I" %}
+<div>Type: {{ sponsor.type }} (Individual)</div>
+{% else %}
+<div>Type: {{ sponsor.type }} (Organization)</div>
+{% endif%}
+<div class="container">
+  Seminar list:
+  <br />
+  {% if seminar_list %}
+  <ul>
+    {% for seminar, amount in seminar_list %}
+    <li>
+      Seminar
+      <a href="/events/seminars/{{ seminar.id }}/">{{ seminar.name }}</a>
+      Amount: {{ amount }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<hr />
+<a href="/events/sponsors/">All Sponsors</a>
+<br />
+<a href="/events/">All Events</a>
+
+{% endblock content %}

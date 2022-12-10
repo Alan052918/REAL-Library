@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Events | Exhibitions | {{ exhibition.id }}</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>Exhibition {{ exhibition.id }}</h1>
-    ID: {{ exhibition.id }}
-    <br />
-    Name: {{ exhibition.name }}
-    <br />
-    Type: {{ exhibition.type }}
-    <br />
-    Start Datetime: {{ exhibition.start_datetime }}
-    <br />
-    Stop Datetime: {{ exhibition.stop_datetime }}
-    <br />
-    Topic:
-    <a href="inventory/topics/{{ exhibition.topic.id }}"
-      >{{ exhibition.topic.name }}</a
-    >
-    <br />
-    Exhibition Expense: {{ exhibition.expense }}
-    <hr />
-    <a href="/events/exhibitions/">All Exhibitions</a>
-    <br />
-    <a href="/events/">All Events</a>
-  </body>
-</html>
+{% extends "main.html" %} {% block content %}
+
+<h1>Exhibition {{ exhibition.id }}</h1>
+ID: {{ exhibition.id }}
+<br />
+Name: {{ exhibition.name }}
+<br />
+Type: {{ exhibition.type }}
+<br />
+Start Datetime: {{ exhibition.start_datetime }}
+<br />
+Stop Datetime: {{ exhibition.stop_datetime }}
+<br />
+Topic:
+<a href="inventory/topics/{{ exhibition.topic.id }}"
+  >{{ exhibition.topic.name }}</a
+>
+<br />
+Exhibition Expense: {{ exhibition.expense }}
+<hr />
+<a href="/events/exhibitions/">All Exhibitions</a>
+<br />
+<a href="/events/">All Events</a>
+
+{% endblock content %}

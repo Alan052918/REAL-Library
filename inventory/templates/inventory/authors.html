@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Inventory | Authors</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-  </head>
-  <body>
-    <h1>Author list</h1>
-    {% if author_list %}
-    <ul>
-      {% for author in author_list %}
-      <li>
-        <a href="/inventory/authors/{{ author.id }}/"
-          >{{ author.first_name }} {{ author.last_name }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    <hr />
-    <a href="/inventory/">Inventory</a>
-  </body>
-</html>
+{% extends "main.html" %} {% block content %}
+
+<h1>Author list</h1>
+{% if author_list %}
+<ul>
+  {% for author in author_list %}
+  <li>
+    <a href="/inventory/authors/{{ author.id }}/"
+      >{{ author.first_name }} {{ author.last_name }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+<hr />
+<a href="/inventory/">Inventory</a>
+
+{% endblock content %}
