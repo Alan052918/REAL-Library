@@ -44,7 +44,9 @@ def seminar_detail_view(request, pk):
     seminar_sponsors = SeminarSponsor.objects.filter(seminar__id=seminar.id)
     if seminar_sponsors.exists():
         sponsor_ids = seminar_sponsors.values_list("sponsor", flat=True)
-        sponsor_list = Sponsor.objects.filter(id__in=sponsor_ids)
+        sponsors = Sponsor.objects.filter(id__in=sponsor_ids)
+        sponsor_amounts = seminar_sponsors.values_list("amount", flat=True)
+        sponsor_list = list(zip(sponsors, sponsor_amounts))
 
     seminar_authors = SeminarAuthor.objects.filter(seminar__id=seminar.id)
     if seminar_authors.exists():

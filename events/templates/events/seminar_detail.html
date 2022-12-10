@@ -25,11 +25,13 @@
       <br />
       {% if sponsor_list %}
       <ul>
-        {% for sponsor in sponsor_list %}
+        {% for sponsor, amount in sponsor_list %}
         <li>
+          Sponsor:
           <a href="/events/sponsors/{{ sponsor.id }}/"
             >{{ sponsor.first_name }}</a
           >
+          Amount: {{ amount }}
         </li>
         {% endfor %}
       </ul>
