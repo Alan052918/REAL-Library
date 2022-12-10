@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Events</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1>Hello from events</h1>
+    <div class="container">
+      <a href="/events/exhibitions/">Exhibitions list</a>
+      {% if exhibition_list %}
+      <ul>
+        {% for exhibition in exhibition_list %}
+        <li>
+          <a href="/events/exhibitions/{{ exhibition.id }}/"
+            >{{ exhibition.name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="container">
+      <a href="/events/seminars/">Seminars list</a>
+      {% if seminar_list %}
+      <ul>
+        {% for seminar in seminar_list %}
+        <li>
+          <a href="/events/seminars/{{ seminar.id }}/">{{ seminar.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="container">
+      <a href="/events/sponsors/">Sponsors list</a>
+      {% if sponsor_list %}
+      <ul>
+        {% for sponsor in sponsor_list %}
+        <li>
+          <a href="/events/sponsors/{{ sponsor.id }}/"
+            >{{ sponsor.first_name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>
