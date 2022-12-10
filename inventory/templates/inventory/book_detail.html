@@ -31,6 +31,27 @@
       </ul>
       {% endif %}
     </div>
+    <div class="container">
+      Copy list:
+      <br />
+      {% if copy_list %}
+      <ul>
+        {% for copy in copy_list %}
+        <li>
+          {% if copy.status == "A" %}
+          <a href="/inventory/books/{{ book.id }}/copies/{{ copy.id }}/"
+            >Copy: {{ copy.id }} (Available)
+          </a>
+          {% else %}
+          <a href="/inventory/books/{{ book.id }}/copies/{{ copy.id }}/"
+            >Copy: {{ copy.id }} (Not Available)
+          </a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
     <hr />
     <a href="/inventory/books/">All Books</a>
     <br />

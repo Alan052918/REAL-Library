@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 from .models import Topic, Book, Author, BookAuthor, Copy, Rental, Invoice, Payment
@@ -52,6 +51,17 @@ def book_detail_view(request, pk):
             "rental_list": rental_list,
             "author_list": author_list,
         },
+    )
+
+
+def copy_detail_view(request, pk, copy_pk):
+    book = Book.objects.get(pk=pk)
+    copy = Copy.objects.get(pk=copy_pk)
+    rental_list = Rental.objects.filter(copy__id=copy.id)
+    return render(
+        request,
+        "inventory/copy_detail.html",
+        {"book": book, "copy": copy, "rental_list": rental_list},
     )
 
 
