@@ -3,25 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Rooms</title>
+    <title>REAL Library</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    <h1>Welcome to rooms</h1>
-    {% if room_list %}
+    <h1>Welcome to REAL library</h1>
     <ul>
-      {% for room in room_list %}
-      <li>
-        <a href="/rooms/{{ room.id }}/"
-          >ID: {{ room.id }} Capacity: {{ room.capacity }}</a
-        >
-      </li>
-      {% endfor %}
+      <li><a href="/inventory/">Inventory</a></li>
+      <li><a href="/events/">Events</a></li>
+      <li><a href="/rooms/">Rooms</a></li>
     </ul>
-    {% endif %}
-    <hr />
-    <a href="/">Home</a>
   </body>
 </html>
