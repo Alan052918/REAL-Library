@@ -27,11 +27,15 @@
       <ul>
         {% for sponsor, amount in sponsor_list %}
         <li>
-          Sponsor:
+          Sponsor: {% if sponsor.type == "I" %}
           <a href="/events/sponsors/{{ sponsor.id }}/"
-            >{{ sponsor.first_name }}</a
+            >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
           >
-          Amount: {{ amount }}
+          {% else %}
+          <a href="/events/sponsors/{{ sponsor.id }}/"
+            >{{ sponsor.first_name }} (Organization)</a
+          >
+          {% endif %} Amount: {{ amount }}
         </li>
         {% endfor %}
       </ul>
