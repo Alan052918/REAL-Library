@@ -5,13 +5,16 @@ from inventory.models import Author
 
 
 def index(request):
+    exhibition_list = Exhibition.objects.all()
+    seminar_list = Seminar.objects.all()
+    sponsor_list = Sponsor.objects.all()
     return render(
         request,
         "events/index.html",
         {
-            "exhibition_list": Exhibition.objects.all(),
-            "seminar_list": Seminar.objects.all(),
-            "sponsor_list": Sponsor.objects.all(),
+            "exhibition_list": exhibition_list,
+            "seminar_list": seminar_list,
+            "sponsor_list": sponsor_list,
         },
     )
 
