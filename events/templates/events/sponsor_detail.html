@@ -16,7 +16,26 @@
     <br />
     Last Name: {{ sponsor.last_name }}
     <br />
-    Type: {{ sponsor.type }}
+    {% if sponsor.type == "I" %}
+    <div>Type: {{ sponsor.type }} (Individual)</div>
+    {% else %}
+    <div>Type: {{ sponsor.type }} (Organization)</div>
+    {% endif%}
+    <div class="container">
+      Seminar list:
+      <br />
+      {% if seminar_list %}
+      <ul>
+        {% for seminar, amount in seminar_list %}
+        <li>
+          Seminar
+          <a href="/events/seminars/{{ seminar.id }}/">{{ seminar.name }}</a>
+          Amount: {{ amount }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
     <hr />
     <a href="/events/sponsors/">All Sponsors</a>
     <br />

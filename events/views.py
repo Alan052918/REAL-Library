@@ -62,4 +62,16 @@ def seminar_detail_view(request, pk):
 
 def sponsor_detail_view(request, pk):
     sponsor = Sponsor.objects.get(pk=pk)
-    return render(request, "events/sponsor_detail.html", {"sponsor": sponsor})
+
+    seminar_sponsors = SeminarSponsor.objects.filter(sponsor__id=sponsor.id)
+    if seminar_sponsors.exists():
+        seminar_ids = seminar_sponsors.values_list("seminar", flat=True)
+        seminars = Seminar.objects.filter(id__in=seminar_ids)
+        sponsor_amounts = seminar_sponsors.values_list("amount", flat=True)
+        seminar_list = list(zip(seminars, sponsor_amounts))
+
+    return render(
+        request,
+        "events/sponsor_detail.html",
+        {"sponsor": sponsor, "seminar_list": seminar_list},
+    )
