@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Rooms | {{ room.id }}
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Room {{ room.id }}</h1>
 ID: {{ room.id }}

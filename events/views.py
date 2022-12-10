@@ -19,23 +19,6 @@ def index(request):
     )
 
 
-def exhibitions_view(request):
-    exhibition_list = Exhibition.objects.all()
-    return render(
-        request, "events/exhibitions.html", {"exhibition_list": exhibition_list}
-    )
-
-
-def seminars_view(request):
-    seminar_list = Seminar.objects.all()
-    return render(request, "events/seminars.html", {"seminar_list": seminar_list})
-
-
-def sponsors_view(request):
-    sponsor_list = Sponsor.objects.all().order_by("-id")
-    return render(request, "events/sponsors.html", {"sponsor_list": sponsor_list})
-
-
 def exhibition_detail_view(request, pk):
     exhibition = Exhibition.objects.get(pk=pk)
     return render(request, "events/exhibition_detail.html", {"exhibition": exhibition})

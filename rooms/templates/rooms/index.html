@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Rooms
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Welcome to rooms</h1>
 {% if room_list %}
@@ -11,8 +17,4 @@
   </li>
   {% endfor %}
 </ul>
-{% endif %}
-<hr />
-<a href="/">Home</a>
-
-{% endblock content %}
+{% endif %} {% endblock content %}

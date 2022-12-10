@@ -1,4 +1,6 @@
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 
 from .decorators import unauthenticated_user
@@ -16,7 +18,9 @@ def signup(request):
     if request.method == "POST":
         form = CustomerCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            group = Group.objects.get(name="customer")
+            user.groups.add(group)
             messages.success(request, "Account created successfully!")
             return redirect("/login/")
 
@@ -38,7 +42,11 @@ def login(request):
     return render(request, "home/login.html")
 
 
-@unauthenticated_user
+@login_required(login_url="/login/")
 def logout(request):
     auth.logout(request)
     return redirect("/")
+
+
+def unauthorized(request):
+    return render(request, "home/unauthorized.html")

@@ -1,45 +1,113 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Inventory
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Welcome to inventory</h1>
-<div class="container">
-  <a href="/inventory/topics/">Topic list</a>
-  {% if topic_list %}
-  <ul>
-    {% for topic in topic_list %}
-    <li>
-      <a href="/inventory/topics/{{ topic.id }}/">{{ topic.name }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+
+<div class="d-flex align-items-start">
+  <div
+    class="nav flex-column nav-pills me-3"
+    id="v-pills-tab"
+    role="tablist"
+    aria-orientation="vertical"
+  >
+    <button
+      class="nav-link active"
+      id="v-pills-topics-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-topics"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-topics"
+      aria-selected="true"
+    >
+      Topics
+    </button>
+    <button
+      class="nav-link"
+      id="v-pills-books-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-books"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-books"
+      aria-selected="false"
+    >
+      Books
+    </button>
+    <button
+      class="nav-link"
+      id="v-pills-authors-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-authors"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-authors"
+      aria-selected="false"
+    >
+      Authors
+    </button>
+  </div>
+
+  <div class="tab-content" id="v-pills-tabContent">
+    <div
+      class="tab-pane fade show active"
+      id="v-pills-topics"
+      role="tabpanel"
+      aria-labelledby="v-pills-topics-tab"
+      tabindex="0"
+    >
+      {% if topic_list %}
+      <ul>
+        {% for topic in topic_list %}
+        <li>
+          <a href="/inventory/topics/{{ topic.id }}/">{{ topic.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div
+      class="tab-pane fade"
+      id="v-pills-books"
+      role="tabpanel"
+      aria-labelledby="v-pills-books-tab"
+      tabindex="0"
+    >
+      {% if book_list %}
+      <ul>
+        {% for book in book_list %}
+        <li>
+          <a href="/inventory/books/{{ book.id }}/">{{ book.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div
+      class="tab-pane fade"
+      id="v-pills-authors"
+      role="tabpanel"
+      aria-labelledby="v-pills-authors-tab"
+      tabindex="0"
+    >
+      {% if author_list %}
+      <ul>
+        {% for author in author_list %}
+        <li>
+          <a href="/inventory/authors/{{ author.id }}/"
+            >{{ author.first_name }} {{ author.last_name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
 </div>
-<div class="container">
-  <a href="/inventory/books/">Book list</a>
-  {% if book_list %}
-  <ul>
-    {% for book in book_list %}
-    <li>
-      <a href="/inventory/books/{{ book.id }}/">{{ book.name }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-</div>
-<div class="container">
-  <a href="/inventory/authors/">Authors list</a>
-  {% if author_list %}
-  <ul>
-    {% for author in author_list %}
-    <li>
-      <a href="/inventory/authors/{{ author.id }}/"
-        >{{ author.first_name }} {{ author.last_name }}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-</div>
-<hr />
-<a href="/">Home</a>
 
 {% endblock content %}

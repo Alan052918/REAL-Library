@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Events | {{ sponsor.first_name }} {{ sponsor.last_name }}
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Sponsor {{ sponsor.id }}</h1>
 ID: {{ sponsor.id }}

@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Inventory | Books | {{ book.name }}
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Book {{ book.id }}</h1>
 ID: {{ book.id }}

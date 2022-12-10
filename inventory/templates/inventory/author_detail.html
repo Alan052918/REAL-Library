@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Inventory | Authors | {{ author.first_name }} {{ author.last_name }}
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Author {{ author.id }}</h1>
 ID: {{ author.id }}

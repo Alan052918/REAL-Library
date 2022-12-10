@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Inventory | Topics | {{ topic.name }}
+{%endblock page-title%}
+
+{% block content %}
 
 <h1>Topic {{ topic.id }}</h1>
 ID: {{ topic.id }}

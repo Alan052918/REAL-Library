@@ -19,14 +19,11 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("exhibitions/", views.exhibitions_view, name="exhibitions"),
     path(
         "exhibitions/<int:pk>/",
         views.exhibition_detail_view,
         name="exhibition-detail",
     ),
-    path("seminars/", views.seminars_view, name="seminars"),
     path("seminars/<int:pk>/", views.seminar_detail_view, name="seminar-detail"),
-    path("sponsors/", views.sponsors_view, name="sponsors"),
     path("sponsors/<int:pk>/", views.sponsor_detail_view, name="sponsor-detail"),
 ]
