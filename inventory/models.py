@@ -50,22 +50,26 @@ class Copy(models.Model):
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
     def __str__(self):
-        return f"book {self.book}"
+        return f"{self.id} {self.status} book: {self.book.id} {self.book.name}"
 
 
 class Rental(models.Model):
-    status = models.CharField(max_length=1)
+    RENTAL_STATUS = [(0, "Borrowed"), (1, "Returned"), (2, "Overdue")]
+
+    status = models.CharField(max_length=10, choices=RENTAL_STATUS)
     borrow_date = models.DateField("borrowed date")
     expected_return = models.DateField("expected return date")
-    actual_return = models.DateField("actual return date")
+    actual_return = models.DateField("actual return date", null=True, blank=True)
 
-    copy = models.ForeignKey(Copy, on_delete=models.RESTRICT, null=True)
+    copy = models.ForeignKey(Copy, on_delete=models.RESTRICT)
 
     class Meta:
         indexes = [models.Index(fields=["id"])]
 
     def __str__(self):
-        return f"{self.id}"
+        return "{} {} {} copy: {}".format(
+            self.id, self.status, self.borrow_date, self.copy.id
+        )
 
 
 class Invoice(models.Model):
@@ -78,7 +82,7 @@ class Invoice(models.Model):
         indexes = [models.Index(fields=["id"])]
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.id} {self.date} {self.amount} rental: {self.rental.id}"
 
 
 class Payment(models.Model):
@@ -93,4 +97,12 @@ class Payment(models.Model):
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id}"
+        return "{} {} {} {} {} {} invoice: {}".format(
+            self.id,
+            self.date,
+            self.first_name,
+            self.last_name,
+            self.method,
+            self.amount,
+            self.invoice.id,
+        )

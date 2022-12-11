@@ -18,7 +18,15 @@ class Event(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.name
+        return "{} {} {} {} {} topic: {} {}".format(
+            self.id,
+            self.name,
+            self.type,
+            self.start_datetime,
+            self.stop_datetime,
+            self.topic.id,
+            self.topic.name,
+        )
 
 
 class Exhibition(Event):
@@ -34,7 +42,7 @@ class Sponsor(models.Model):
     type = models.CharField(max_length=15, choices=SPONSOR_TYPE)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.id} {self.first_name} {self.last_name} type: {self.type}"
 
 
 class Seminar(Event):

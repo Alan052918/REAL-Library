@@ -9,7 +9,7 @@ class Room(models.Model):
     location = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.id} capacity: {self.capacity}"
+        return f"{self.id} capacity: {self.capacity} location: {self.location}"
 
 
 class RoomCustomer(models.Model):
