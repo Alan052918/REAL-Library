@@ -1,0 +1,15 @@
+{% if topic_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for topic in topic_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ topic.name }}</h5>
+        <p class="card-text">{{ topic.description }}</p>
+        <a href="/inventory/topics/{{ topic.id }}/" class="stretched-link"></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,19 @@
+{% if author_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for author in author_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ author.first_name }} {{ author.last_name }}
+        </h5>
+        <a
+          href="/inventory/authors/{{ author.id }}/"
+          class="stretched-link"
+        ></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
