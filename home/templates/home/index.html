@@ -1,10 +1,69 @@
-{% include "main.html" %} {% block content %}
+{% extends "main.html" %} {% load static %} {% block content %}
 
-<h1>Welcome to REAL library</h1>
-<ul>
-  <li><a href="/inventory/">Inventory</a></li>
-  <li><a href="/events/">Events</a></li>
-  <li><a href="/rooms/">Rooms</a></li>
-</ul>
+<h1 class="display-1 text-center">Welcome</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="{% static 'images/books.png' %}"
+        class="card-img-top"
+        alt="books"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Inventory</h5>
+        <p class="card-text">
+          A huge collection of books, magazines, newspapers, and other.
+          Classified into topics such as history, children, science, arts,
+          travel, adventure, drama, and more. You can find any book you want.
+          REAL also maintains infomation of book authors.
+        </p>
+        <a href="/inventory/" class="btn btn-primary stretched-link"
+          >Go to inventory</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="{% static 'images/events.png' %}"
+        class="card-img-top"
+        alt="events"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Events</h5>
+        <p class="card-text">
+          Different types of events are held in the library hall on specific
+          topics, including exhibitions and seminars. Authors can attend
+          seminars with invitation ID. Customers can attend exhibitions with
+          registration ID.
+        </p>
+        <a href="/events/" class="btn btn-primary stretched-link"
+          >Go to events</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="{% static 'images/rooms.png' %}"
+        class="card-img-top"
+        alt="rooms"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Rooms</h5>
+        <p class="card-text">
+          REAL provides study rooms for groups. Each room has a specified
+          capacity (maximum number of people that can be presented in a room at
+          once). You can book a room for a dedicated time slot on a particular
+          date.
+        </p>
+        <a href="/rooms/" class="btn btn-primary stretched-link">Go to rooms</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

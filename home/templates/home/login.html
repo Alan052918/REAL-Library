@@ -1,17 +1,31 @@
 {% extends "main.html" %} {% block content %}
 
-<h1>Login</h1>
+<h1 class="display-1 text-center">Login</h1>
+
 <form method="POST">
   {% csrf_token %}
-  <p>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" />
-  </p>
-  <p>
-    <label for="password">Password</label>
-    <input type="text" name="password" id="password" />
-  </p>
-  <input type="submit" value="Login" />
+  <div class="row justify-content-center">
+    <div class="form-group col-lg-2">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username" id="username" />
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-lg-2">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+      />
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-lg-2">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
 </form>
 
 {% for message in messages %}

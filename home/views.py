@@ -11,6 +11,11 @@ def index(request):
     return render(request, "home/index.html")
 
 
+@login_required(login_url="/login/")
+def account(request):
+    return render(request, "home/account.html", {"user": request.user})
+
+
 @unauthenticated_user
 def signup(request):
     form = CustomerCreationForm()
