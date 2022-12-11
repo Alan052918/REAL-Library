@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<h1>Welcome to events</h1>
+<h1 class="display-1 text-center">Events</h1>
 
 <div class="d-flex align-items-start">
   <div
@@ -101,7 +101,7 @@
       <ul>
         {% for sponsor in sponsor_list %}
         <li>
-          {% if sponsor.type == "I" %}
+          {% if sponsor.type == "Individual" %}
           <a href="/events/sponsors/{{ sponsor.id }}/"
             >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
           >

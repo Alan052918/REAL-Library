@@ -13,7 +13,7 @@ First Name: {{ sponsor.first_name }}
 <br />
 Last Name: {{ sponsor.last_name }}
 <br />
-{% if sponsor.type == "I" %}
+{% if sponsor.type == "Individual" %}
 <div>Type: {{ sponsor.type }} (Individual)</div>
 {% else %}
 <div>Type: {{ sponsor.type }} (Organization)</div>
@@ -33,9 +33,8 @@ Last Name: {{ sponsor.last_name }}
   </ul>
   {% endif %}
 </div>
+
 <hr />
-<a href="/events/sponsors/">All Sponsors</a>
-<br />
 <a href="/events/">All Events</a>
 
 {% endblock content %}

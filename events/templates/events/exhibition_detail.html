@@ -18,14 +18,13 @@ Start Datetime: {{ exhibition.start_datetime }}
 Stop Datetime: {{ exhibition.stop_datetime }}
 <br />
 Topic:
-<a href="inventory/topics/{{ exhibition.topic.id }}"
+<a href="/inventory/topics/{{ exhibition.topic.id }}/"
   >{{ exhibition.topic.name }}</a
 >
 <br />
 Exhibition Expense: {{ exhibition.expense }}
+
 <hr />
-<a href="/events/exhibitions/">All Exhibitions</a>
-<br />
 <a href="/events/">All Events</a>
 
 {% endblock content %}

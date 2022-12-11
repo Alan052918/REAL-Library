@@ -24,7 +24,7 @@ Stop Datetime: {{ seminar.stop_datetime }}
   <ul>
     {% for sponsor, amount in sponsor_list %}
     <li>
-      Sponsor: {% if sponsor.type == "I" %}
+      Sponsor: {% if sponsor.type == "Individual" %}
       <a href="/events/sponsors/{{ sponsor.id }}/"
         >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
       >
@@ -53,9 +53,8 @@ Stop Datetime: {{ seminar.stop_datetime }}
   </ul>
   {% endif %}
 </div>
+
 <hr />
-<a href="/events/seminars/">All Seminars</a>
-<br />
 <a href="/events/">All Events</a>
 
 {% endblock content %}
