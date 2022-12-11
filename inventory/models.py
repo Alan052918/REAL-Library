@@ -25,8 +25,8 @@ class Author(models.Model):
     email = models.EmailField(max_length=50)
     street = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
-    state = models.CharField(max_length=2)
-    zipcode = models.IntegerField()
+    state = models.CharField(max_length=2, validators=[MinLengthValidator(2)])
+    zipcode = models.CharField(max_length=5, validators=[MinLengthValidator(5)])
 
     books = models.ManyToManyField(Book, through="BookAuthor")
 
@@ -43,7 +43,9 @@ class BookAuthor(models.Model):
 
 
 class Copy(models.Model):
-    status = models.CharField(max_length=1, validators=[MinLengthValidator])
+    COPY_STATUS = [(0, "Available"), (1, "Borrowed"), (2, "Lost"), (3, "Damaged")]
+
+    status = models.CharField(max_length=10, choices=COPY_STATUS)
 
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
@@ -80,8 +82,10 @@ class Invoice(models.Model):
 
 
 class Payment(models.Model):
+    PAYMENT_METHOD = [(0, "Cash"), (1, "Credit"), (2, "Debit"), (3, "PayPal")]
+
     date = models.DateField("payment date")
-    method = models.CharField(max_length=2, validators=[MinLengthValidator])
+    method = models.CharField(max_length=10, choices=PAYMENT_METHOD)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     amount = models.DecimalField(max_digits=10, decimal_places=2)

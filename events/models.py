@@ -1,13 +1,14 @@
-from django.core.validators import MinLengthValidator
 from django.db import models
 
 from inventory.models import Author, Topic
 
 
 class Event(models.Model):
+    EVENT_TYPE = [(0, "Seminar"), (1, "Exhibition")]
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
-    type = models.CharField(max_length=10)
+    type = models.CharField(max_length=10, choices=EVENT_TYPE)
     start_datetime = models.DateTimeField("start datetime")
     stop_datetime = models.DateTimeField("stop datetime")
 
@@ -25,10 +26,12 @@ class Exhibition(Event):
 
 
 class Sponsor(models.Model):
+    SPONSOR_TYPE = [(0, "Individual"), (1, "Organization")]
+
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30, null=True, blank=True)
-    type = models.CharField(max_length=1, validators=[MinLengthValidator(1)])
+    type = models.CharField(max_length=15, choices=SPONSOR_TYPE)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
