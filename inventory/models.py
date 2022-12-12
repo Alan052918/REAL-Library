@@ -41,6 +41,9 @@ class BookAuthor(models.Model):
     class Meta:
         unique_together = (("book", "author"),)
 
+    def __str__(self):
+        return f"{self.book.name} - {self.author.first_name} {self.author.last_name}"
+
 
 class Copy(models.Model):
     COPY_STATUS = [
