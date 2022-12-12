@@ -5,8 +5,10 @@
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">{{ book.name }}</h5>
-        <p class="card-text">{{ book.topic.name }}</p>
         <a href="/inventory/books/{{ book.id }}/" class="stretched-link"></a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ book.topic.name }}</small>
       </div>
     </div>
   </div>
