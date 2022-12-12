@@ -35,15 +35,9 @@ Topic:
   <ul>
     {% for copy in copy_list %}
     <li>
-      {% if copy.status == "A" %}
       <a href="/inventory/books/{{ book.id }}/copies/{{ copy.id }}/"
-        >Copy: {{ copy.id }} (Available)
+        >Copy: {{ copy.id }} {{ copy.status }}
       </a>
-      {% else %}
-      <a href="/inventory/books/{{ book.id }}/copies/{{ copy.id }}/"
-        >Copy: {{ copy.id }} (Not Available)
-      </a>
-      {% endif %}
     </li>
     {% endfor %}
   </ul>
@@ -51,6 +45,6 @@ Topic:
 </div>
 
 <hr />
-<a href="/inventory/">Inventory</a>
+<a href="/inventory/books/">Books</a>
 
 {% endblock content %}

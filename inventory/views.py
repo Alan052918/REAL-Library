@@ -10,7 +10,12 @@ def index(request):
     return render(
         request,
         "inventory/index.html",
-        {"topic_list": topic_list, "book_list": book_list, "author_list": author_list},
+        {
+            "topic_list": topic_list,
+            "book_list": book_list,
+            "author_list": author_list,
+            "active_tab": "topics",
+        },
     )
 
 
@@ -19,6 +24,22 @@ def topic_detail_view(request, pk):
     book_list = Book.objects.filter(topic__id=topic.id)
     return render(
         request, "inventory/topic_detail.html", {"topic": topic, "book_list": book_list}
+    )
+
+
+def books_tab(request):
+    topic_list = Topic.objects.all()
+    book_list = Book.objects.all()
+    author_list = Author.objects.all()
+    return render(
+        request,
+        "inventory/index.html",
+        {
+            "topic_list": topic_list,
+            "book_list": book_list,
+            "author_list": author_list,
+            "active_tab": "books",
+        },
     )
 
 
@@ -52,6 +73,22 @@ def copy_detail_view(request, pk, copy_pk):
         request,
         "inventory/copy_detail.html",
         {"book": book, "copy": copy, "rental_list": rental_list},
+    )
+
+
+def authors_tab(request):
+    topic_list = Topic.objects.all()
+    book_list = Book.objects.all()
+    author_list = Author.objects.all()
+    return render(
+        request,
+        "inventory/index.html",
+        {
+            "topic_list": topic_list,
+            "book_list": book_list,
+            "author_list": author_list,
+            "active_tab": "authors",
+        },
     )
 
 
