@@ -8,8 +8,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: reallibrary
+    volumes:
+      - db_data:/var/lib/mysql
     healthcheck:
       test: mysql -uroot -ppassword -e "SHOW DATABASES;"
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  redis:
+    platform: linux/amd64
+    image: redis:5.0.5
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: redis-cli -a password ping
       interval: 10s
       timeout: 10s
       retries: 5
@@ -24,3 +37,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  db_data:
+  redis_data:

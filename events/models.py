@@ -4,7 +4,7 @@ from inventory.models import Author, Topic
 
 
 class Event(models.Model):
-    EVENT_TYPE = [(0, "Seminar"), (1, "Exhibition")]
+    EVENT_TYPE = [("Seminar", "Seminar"), ("Exhibition", "Exhibition")]
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
@@ -34,7 +34,7 @@ class Exhibition(Event):
 
 
 class Sponsor(models.Model):
-    SPONSOR_TYPE = [(0, "Individual"), (1, "Organization")]
+    SPONSOR_TYPE = [("Individual", "Individual"), ("Organization", "Organization")]
 
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)

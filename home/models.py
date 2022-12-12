@@ -3,7 +3,11 @@ from django.db import models
 
 
 class Customer(models.Model):
-    IDENTITY_TYPE = [(0, "Passport"), (1, "SSN"), (2, "Driver's License")]
+    IDENTITY_TYPE = [
+        ("Passport", "Passport"),
+        ("SSN", "SSN"),
+        ("Driver's License", "Driver's License"),
+    ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=13)

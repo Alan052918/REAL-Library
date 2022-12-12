@@ -43,7 +43,12 @@ class BookAuthor(models.Model):
 
 
 class Copy(models.Model):
-    COPY_STATUS = [(0, "Available"), (1, "Borrowed"), (2, "Lost"), (3, "Damaged")]
+    COPY_STATUS = [
+        ("Available", "Available"),
+        ("Borrowed", "Borrowed"),
+        ("Lost", "Lost"),
+        ("Damaged", "Damaged"),
+    ]
 
     status = models.CharField(max_length=10, choices=COPY_STATUS)
 
@@ -54,7 +59,11 @@ class Copy(models.Model):
 
 
 class Rental(models.Model):
-    RENTAL_STATUS = [(0, "Borrowed"), (1, "Returned"), (2, "Overdue")]
+    RENTAL_STATUS = [
+        ("Borrowed", "Borrowed"),
+        ("Returned", "Returned"),
+        ("Overdue", "Overdue"),
+    ]
 
     status = models.CharField(max_length=10, choices=RENTAL_STATUS)
     borrow_date = models.DateField("borrowed date")
@@ -86,7 +95,12 @@ class Invoice(models.Model):
 
 
 class Payment(models.Model):
-    PAYMENT_METHOD = [(0, "Cash"), (1, "Credit"), (2, "Debit"), (3, "PayPal")]
+    PAYMENT_METHOD = [
+        ("Cash", "Cash"),
+        ("Credit", "Credit"),
+        ("Debit", "Debit"),
+        ("PayPal", "PayPal"),
+    ]
 
     date = models.DateField("payment date")
     method = models.CharField(max_length=10, choices=PAYMENT_METHOD)
