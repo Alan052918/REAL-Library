@@ -48,6 +48,7 @@ def book_detail_view(request, pk):
     copy_list = Copy.objects.filter(book__id=book.id)
     rental_list = Rental.objects.filter(copy__in=copy_list)
 
+    author_list = []
     book_authors = BookAuthor.objects.filter(book__id=book.id)
     if book_authors.exists():
         author_ids = book_authors.values_list("author", flat=True)
@@ -95,6 +96,7 @@ def authors_tab(request):
 def author_detail_view(request, pk):
     author = Author.objects.get(pk=pk)
 
+    book_list = []
     book_authors = BookAuthor.objects.filter(author__id=author.id)
     if book_authors.exists():
         book_ids = book_authors.values_list("book", flat=True)
