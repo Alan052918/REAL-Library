@@ -5,8 +5,9 @@
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">
-          {{ author.first_name }} {{ author.last_name }}
+          {{ author.first_name }}
         </h5>
+        <p>{{ author.last_name }}</p>
         <a
           href="/inventory/authors/{{ author.id }}/"
           class="stretched-link"
