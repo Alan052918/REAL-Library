@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .models import Topic, Book, Author, BookAuthor, Copy, Rental, Invoice, Payment
@@ -19,6 +20,7 @@ def index(request):
     )
 
 
+@login_required(login_url="/login/")
 def topic_detail_view(request, pk):
     topic = Topic.objects.get(pk=pk)
     book_list = Book.objects.filter(topic__id=topic.id)
@@ -43,6 +45,7 @@ def books_tab(request):
     )
 
 
+@login_required(login_url="/login/")
 def book_detail_view(request, pk):
     book = Book.objects.get(pk=pk)
     copy_list = Copy.objects.filter(book__id=book.id)
@@ -66,6 +69,7 @@ def book_detail_view(request, pk):
     )
 
 
+@login_required(login_url="/login/")
 def copy_detail_view(request, pk, copy_pk):
     book = Book.objects.get(pk=pk)
     copy = Copy.objects.get(pk=copy_pk)

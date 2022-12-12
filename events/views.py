@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from .models import Exhibition, Seminar, Sponsor, SeminarAuthor, SeminarSponsor
@@ -22,6 +23,7 @@ def index(request):
     )
 
 
+@login_required(login_url="/login/")
 def exhibition_detail_view(request, pk):
     exhibition = Exhibition.objects.get(pk=pk)
     return render(request, "events/exhibition_detail.html", {"exhibition": exhibition})
@@ -45,6 +47,7 @@ def seminars_tab(request):
     )
 
 
+@login_required(login_url="/login/")
 def seminar_detail_view(request, pk):
     seminar = Seminar.objects.get(pk=pk)
 
@@ -87,6 +90,7 @@ def sponsors_tab(request):
     )
 
 
+@login_required(login_url="/login/")
 def sponsor_detail_view(request, pk):
     sponsor = Sponsor.objects.get(pk=pk)
 
