@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 
 {% block page-title %}
-| Events | {{ exhibition.name }}
+| Events | {{ exhibition.name}}
 {%endblock page-title%}
 
 {% block content %}
@@ -23,6 +23,15 @@ Topic:
 >
 <br />
 Exhibition Expense: {{ exhibition.expense }}
+<br />
+<form method="POST">
+  <a
+    href="/events/exhibitions/{{ exhibition.id }}/register/"
+    type="submit"
+    class="btn btn-primary {% if registered %}disabled{% endif %}"
+    >Register</a
+  >
+</form>
 
 <hr />
 <a href="/events/">All Exhibitions</a>

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-from .models import Exhibition, Seminar, Sponsor, SeminarAuthor, SeminarSponsor
+from .models import *
 from inventory.models import Author
 
 
@@ -26,7 +26,26 @@ def index(request):
 @login_required(login_url="/login/")
 def exhibition_detail_view(request, pk):
     exhibition = Exhibition.objects.get(pk=pk)
-    return render(request, "events/exhibition_detail.html", {"exhibition": exhibition})
+    exhibition_user = ExhibitionUser.objects.filter(
+        user__id=request.user.id, exhibition__id=exhibition.id
+    )
+    registered = exhibition_user.exists()
+    return render(
+        request,
+        "events/exhibition_detail.html",
+        {"exhibition": exhibition, "registered": registered},
+    )
+
+
+@login_required(login_url="/login/")
+def register_user(request, pk):
+    exhibition = Exhibition.objects.get(pk=pk)
+    exhibition_user = ExhibitionUser.objects.filter(
+        user__id=request.user.id, exhibition__id=exhibition.id
+    )
+    if not exhibition_user.exists():
+        ExhibitionUser.objects.create(user=request.user, exhibition=exhibition)
+    return redirect(f"/events/exhibitions/{pk}/")
 
 
 def seminars_tab(request):
