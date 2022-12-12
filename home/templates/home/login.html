@@ -1,4 +1,10 @@
-{% extends "main.html" %} {% block content %}
+{% extends "main.html" %}
+
+{% block page-title %}
+| Account | Login
+{%endblock page-title%}
+
+{% block content %}
 
 <h1 class="display-1 text-center">Login</h1>
 
@@ -35,9 +41,9 @@
               </button>
             </div>
 
-            <div>
+            <div class="container">
               {% for message in messages %}
-              <p id="messages">{{ message }}</p>
+              <div class="alert alert-primary" role="alert">{{ message }}</div>
               {% endfor %}
             </div>
 

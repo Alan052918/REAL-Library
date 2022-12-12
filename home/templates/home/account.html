@@ -8,18 +8,80 @@
 
 <h1 class="display-1 text-center">Account</h1>
 
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">Username: {{ user.username }}</li>
-  <li class="list-group-item">Email: {{ user.email }}</li>
-  <li class="list-group-item">First Name: {{ user.first_name }}</li>
-  <li class="list-group-item">Last Name: {{ user.last_name }}</li>
-  <li class="list-group-item">Phone: {{ user.customer.phone }}</li>
-  <li class="list-group-item">
-    Identity type: {{ user.customer.identity_type }}
-  </li>
-  <li class="list-group-item">
-    Identity number: {{ user.customer.identity_number }}
-  </li>
-</ul>
+<div class="d-flex align-items-start">
+  <div
+    class="nav flex-column nav-pills me-3"
+    id="v-pills-tab"
+    role="tablist"
+    aria-orientation="vertical"
+  >
+    <button
+      class="nav-link {% if active_tab == 'profile' %}active{% endif %}"
+      id="v-pills-profile-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-profile"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-profile"
+      aria-selected="{% if active_tab == 'profile' %}true{% else %}false{% endif %}"
+    >
+      Profile
+    </button>
+    <button
+      class="nav-link {% if active_tab == 'rentals' %}active{% endif %}"
+      id="v-pills-rentals-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-rentals"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-rentals"
+      aria-selected="{% if active_tab == 'rentals' %}true{% else %}false{% endif %}"
+    >
+      Rentals
+    </button>
+    <button
+      class="nav-link {% if active_tab == 'exhibitions' %}active{% endif %}"
+      id="v-pills-exhibitions-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-exhibitions"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-exhibitions"
+      aria-selected="{% if active_tab == 'exhibitions' %}true{% else %}false{% endif %}"
+    >
+      Exhibitions
+    </button>
+  </div>
+
+  <div class="tab-content" id="v-pills-tabContent">
+    <div
+      class="tab-pane {% if active_tab == 'profile' %}fade show active{% endif %}"
+      id="v-pills-profile"
+      role="tabpanel"
+      aria-labelledby="v-pills-profile-tab"
+      tabindex="0"
+    >
+      {% include 'home/profile_tab.html' %}
+    </div>
+    <div
+      class="tab-pane {% if active_tab == 'rentals' %}fade show active{% endif %}"
+      id="v-pills-rentals"
+      role="tabpanel"
+      aria-labelledby="v-pills-rentals-tab"
+      tabindex="1"
+    >
+      {% include 'home/rentals_tab.html' %}
+    </div>
+    <div
+      class="tab-pane {% if active_tab == 'exhibitions' %}fade show active{% endif %}"
+      id="v-pills-exhibitions"
+      role="tabpanel"
+      aria-labelledby="v-pills-exhibitions-tab"
+      tabindex="2"
+    >
+      {% include 'home/exhibitions_tab.html' %}
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

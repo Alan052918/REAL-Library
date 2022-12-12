@@ -1,0 +1,127 @@
+{% if overdue_list %}
+<div class="row">
+  {% for overdue in overdue_list %}
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ overdue.copy.book.name }}</h5>
+        <p class="card-text">{{ overdue.status }}</p>
+        <p class="card-text">Copy ID: {{ overdue.copy.id }}</p>
+        <p class="card-text">Expected return: {{ overdue.expected_return }}</p>
+
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <a
+            href="/rentals/{{ overdue.id }}/return"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Return</a
+          >
+          <a
+            href="/rentals/{{ overdue.id }}/lost"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Lost</a
+          >
+          <a
+            href="/rentals/{{ overdue.id }}/damaged"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Damaged</a
+          >
+        </div>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Borrowed on: {{ overdue.borrow_date }}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<hr />
+
+{% if borrowed_list %}
+<div class="row">
+  {% for borrowed in borrowed_list %}
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ borrowed.copy.book.name }}</h5>
+        <p class="card-text">{{ borrowed.status }}</p>
+        <p class="card-text">Copy ID: {{ borrowed.copy.id }}</p>
+        <p class="card-text">Expected return: {{ borrowed.expected_return }}</p>
+
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <a
+            href="/rentals/{{ borrowed.id }}/return"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Return</a
+          >
+          <a
+            href="/rentals/{{ borrowed.id }}/lost"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Lost</a
+          >
+          <a
+            href="/rentals/{{ borrowed.id }}/damaged"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Damaged</a
+          >
+        </div>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"
+          >Borrowed on: {{ borrowed.borrow_date }}</small
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<hr />
+
+{% if returned_list %}
+<div class="row">
+  {% for returned in returned_list %}
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ returned.copy.book.name }}</h5>
+        <p class="card-text">{{ returned.status }}</p>
+        <p class="card-text">Copy ID: {{ returned.copy.id }}</p>
+        <p class="card-text">Expected return: {{ returned.expected_return }}</p>
+
+        <div class="container">
+          <ul>
+            {% for invoice in invoice_list %}
+            <li>
+              <p>Invoice {{ invoice.id }}</p>
+              <p>Date: {{ invoice.date }}</p>
+              <p>Amount: {{ invoice.amount }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"
+          >Borrowed on: {{ returned.borrow_date }}</small
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

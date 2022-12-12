@@ -7,6 +7,9 @@ from django.shortcuts import redirect, render
 from .decorators import unauthenticated_user
 from .forms import CustomerCreationForm
 
+from events.models import Exhibition, ExhibitionUser
+from inventory.models import Rental, Invoice, Payment
+
 
 def index(request):
     return render(request, "home/index.html")
@@ -14,7 +17,33 @@ def index(request):
 
 @login_required(login_url="/login/")
 def account(request):
-    return render(request, "home/account.html", {"user": request.user})
+    borrowed_list = Rental.objects.filter(user__id=request.user.id, status="Borrowed")
+    returned_list = Rental.objects.filter(user__id=request.user.id, status="Returned")
+    overdue_list = Rental.objects.filter(user__id=request.user.id, status="Overdue")
+
+    invoice_list = Invoice.objects.filter(
+        rental__id__in=returned_list.values_list("id", flat=True)
+    )
+
+    exhibition_list = []
+    exhibition_users = ExhibitionUser.objects.filter(user__id=request.user.id)
+    if exhibition_users.exists():
+        exhibition_ids = exhibition_users.values_list("exhibition", flat=True)
+        exhibition_list = Exhibition.objects.filter(id__in=exhibition_ids)
+
+    return render(
+        request,
+        "home/account.html",
+        {
+            "user": request.user,
+            "borrowed_list": borrowed_list,
+            "returned_list": returned_list,
+            "overdue_list": overdue_list,
+            "invoice_list": invoice_list,
+            "exhibition_list": exhibition_list,
+            "active_tab": "profile",
+        },
+    )
 
 
 def signup(request):
@@ -62,7 +91,7 @@ def login(request):
             auth.login(request, user)
             return redirect("/")
 
-        messages.info(request, "Invalid credentials!")
+        messages.error(request, "Invalid credentials!")
 
     return render(request, "home/login.html")
 
