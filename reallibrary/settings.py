@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 
-from dotenv import load_dotenv
+
+#from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv()
+#load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+     "web.apps.WebConfig",
 ]
 
 MIDDLEWARE = [
@@ -58,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+ 
 ]
 
 ROOT_URLCONF = "reallibrary.urls"
@@ -89,11 +92,11 @@ WSGI_APPLICATION = "reallibrary.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("MYSQL_DATABASE"),
-        "HOST": os.environ.get("MYSQL_DATABASE_HOST"),
-        "PORT": os.environ.get("MYSQL_DATABASE_PORT"),
-        "USER": os.environ.get("MYSQL_USER"),
-        "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+        "NAME": 'FinalDemo',
+        "HOST": '127.0.0.1',
+        "PORT": '3306',
+        "USER": 'root',
+        "PASSWORD": 'liuyuyang',
     }
 }
 
@@ -132,7 +135,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+ 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
