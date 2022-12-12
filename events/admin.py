@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from .models import Exhibition, Seminar, Sponsor, SeminarSponsor, SeminarAuthor
+from .models import *
 
 admin.site.register(Exhibition)
+admin.site.register(ExhibitionUser)
 admin.site.register(Seminar)
 admin.site.register(Sponsor)
 admin.site.register(SeminarSponsor)
