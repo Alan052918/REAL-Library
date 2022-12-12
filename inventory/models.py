@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 from django.db import models
 
@@ -73,6 +74,7 @@ class Rental(models.Model):
     expected_return = models.DateField("expected return date")
     actual_return = models.DateField("actual return date", null=True, blank=True)
 
+    user = models.ForeignKey(User, on_delete=models.RESTRICT)
     copy = models.ForeignKey(Copy, on_delete=models.RESTRICT)
 
     class Meta:

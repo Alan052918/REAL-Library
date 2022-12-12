@@ -9,12 +9,7 @@
 <h1>Copy {{ copy.id }}</h1>
 ID: {{ copy.id }}
 <br />
-Status:
-{% if copy.status == "A" %}
-Available
-{% else %}
-Not Available
-{% endif %}
+Status: {{ copy.status }}
 <br />
 Book:
 <a href="/inventory/books/{{ copy.book.id }}/">{{ copy.book.name }}</a>
