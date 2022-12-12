@@ -1,0 +1,45 @@
+{% if individual_sponsor_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for individual_sponsor in individual_sponsor_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ individual_sponsor.first_name }} {{ individual_sponsor.last_name }}
+        </h5>
+        <a
+          href="/events/sponsors/{{ individual_sponsor.id }}/"
+          class="stretched-link"
+        ></a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ individual_sponsor.type }}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<hr />
+
+{% if organization_sponsor_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for organization_sponsor in organization_sponsor_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ organization_sponsor.first_name }}</h5>
+        <a
+          href="/events/sponsors/{{ organization_sponsor.id }}/"
+          class="stretched-link"
+        ></a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{ organization_sponsor.type }}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

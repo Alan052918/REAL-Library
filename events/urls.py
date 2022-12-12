@@ -24,6 +24,8 @@ urlpatterns = [
         views.exhibition_detail_view,
         name="exhibition-detail",
     ),
+    path("seminars/", views.seminars_tab, name="seminars-tab"),
     path("seminars/<int:pk>/", views.seminar_detail_view, name="seminar-detail"),
+    path("sponsors/", views.sponsors_tab, name="sponsors-tab"),
     path("sponsors/<int:pk>/", views.sponsor_detail_view, name="sponsor-detail"),
 ]

@@ -16,38 +16,38 @@
     aria-orientation="vertical"
   >
     <button
-      class="nav-link active"
+      class="nav-link {% if active_tab == "exhibitions" %}active{% endif %}"
       id="v-pills-exhibitions-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-exhibitions"
       type="button"
       role="tab"
       aria-controls="v-pills-exhibitions"
-      aria-selected="true"
+      aria-selected="{% if active_tab == "exhibitions" %}true{% else %}false{% endif %}"
     >
       Exhibitions
     </button>
     <button
-      class="nav-link"
+      class="nav-link {% if active_tab == "seminars" %}active{% endif %}"
       id="v-pills-seminars-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-seminars"
       type="button"
       role="tab"
       aria-controls="v-pills-seminars"
-      aria-selected="false"
+      aria-selected="{% if active_tab == "seminars" %}true{% else %}false{% endif %}"
     >
       Seminars
     </button>
     <button
-      class="nav-link"
+      class="nav-link {% if active_tab == "sponsors" %}active{% endif %}"
       id="v-pills-sponsors-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-sponsors"
       type="button"
       role="tab"
       aria-controls="v-pills-sponsors"
-      aria-selected="false"
+      aria-selected="{% if active_tab == "sponsors" %}true{% else %}false{% endif %}"
     >
       Sponsors
     </button>
@@ -55,65 +55,31 @@
 
   <div class="tab-content" id="v-pills-tabContent">
     <div
-      class="tab-pane fade show active"
+      class="tab-pane {% if active_tab == "exhibitions" %}fade show active{% endif %}"
       id="v-pills-exhibitions"
       role="tabpanel"
       aria-labelledby="v-pills-exhibitions-tab"
       tabindex="0"
     >
-      {% if exhibition_list %}
-      <ul>
-        {% for exhibition in exhibition_list %}
-        <li>
-          <a href="/events/exhibitions/{{ exhibition.id }}/"
-            >{{ exhibition.name }}</a
-          >
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      {% include 'events/exhibitions_tab.html' %}
     </div>
     <div
-      class="tab-pane fade"
+      class="tab-pane {% if active_tab == "seminars" %}fade show active{% endif %}"
       id="v-pills-seminars"
       role="tabpanel"
       aria-labelledby="v-pills-seminars-tab"
       tabindex="0"
     >
-      {% if seminar_list %}
-      <ul>
-        {% for seminar in seminar_list %}
-        <li>
-          <a href="/events/seminars/{{ seminar.id }}/">{{ seminar.name }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      {% include 'events/seminars_tab.html' %}
     </div>
     <div
-      class="tab-pane fade"
+      class="tab-pane {% if active_tab == "sponsors" %}fade show active{% endif %}"
       id="v-pills-sponsors"
       role="tabpanel"
       aria-labelledby="v-pills-sponsors-tab"
       tabindex="0"
     >
-      {% if sponsor_list %}
-      <ul>
-        {% for sponsor in sponsor_list %}
-        <li>
-          {% if sponsor.type == "Individual" %}
-          <a href="/events/sponsors/{{ sponsor.id }}/"
-            >{{ sponsor.first_name }} {{ sponsor.last_name }} (Individual)</a
-          >
-          {% else %}
-          <a href="/events/sponsors/{{ sponsor.id }}/"
-            >{{ sponsor.first_name }} (Organization)</a
-          >
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      {% include 'events/sponsors_tab.html' %}
     </div>
   </div>
 </div>

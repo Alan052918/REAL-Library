@@ -1,0 +1,18 @@
+{% if seminar_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for seminar in seminar_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ seminar.name }}</h5>
+        <p class="card-text">{{ seminar.topic.name }}</p>
+        <a href="/events/seminars/{{ seminar.id }}/" class="stretched-link"></a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">starts at {{ seminar.start_datetime }}</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
