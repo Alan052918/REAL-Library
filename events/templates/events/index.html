@@ -16,38 +16,38 @@
     aria-orientation="vertical"
   >
     <button
-      class="nav-link {% if active_tab == "exhibitions" %}active{% endif %}"
+      class="nav-link {% if active_tab == 'exhibitions' %}active{% endif %}"
       id="v-pills-exhibitions-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-exhibitions"
       type="button"
       role="tab"
       aria-controls="v-pills-exhibitions"
-      aria-selected="{% if active_tab == "exhibitions" %}true{% else %}false{% endif %}"
+      aria-selected="{% if active_tab == 'exhibitions' %}true{% else %}false{% endif %}"
     >
       Exhibitions
     </button>
     <button
-      class="nav-link {% if active_tab == "seminars" %}active{% endif %}"
+      class="nav-link {% if active_tab == 'seminars' %}active{% endif %}"
       id="v-pills-seminars-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-seminars"
       type="button"
       role="tab"
       aria-controls="v-pills-seminars"
-      aria-selected="{% if active_tab == "seminars" %}true{% else %}false{% endif %}"
+      aria-selected="{% if active_tab == 'seminars' %}true{% else %}false{% endif %}"
     >
       Seminars
     </button>
     <button
-      class="nav-link {% if active_tab == "sponsors" %}active{% endif %}"
+      class="nav-link {% if active_tab == 'sponsors' %}active{% endif %}"
       id="v-pills-sponsors-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-sponsors"
       type="button"
       role="tab"
       aria-controls="v-pills-sponsors"
-      aria-selected="{% if active_tab == "sponsors" %}true{% else %}false{% endif %}"
+      aria-selected="{% if active_tab == 'sponsors' %}true{% else %}false{% endif %}"
     >
       Sponsors
     </button>
@@ -55,7 +55,7 @@
 
   <div class="tab-content" id="v-pills-tabContent">
     <div
-      class="tab-pane {% if active_tab == "exhibitions" %}fade show active{% endif %}"
+      class="tab-pane {% if active_tab == 'exhibitions' %}fade show active{% endif %}"
       id="v-pills-exhibitions"
       role="tabpanel"
       aria-labelledby="v-pills-exhibitions-tab"
@@ -64,7 +64,7 @@
       {% include 'events/exhibitions_tab.html' %}
     </div>
     <div
-      class="tab-pane {% if active_tab == "seminars" %}fade show active{% endif %}"
+      class="tab-pane {% if active_tab == 'seminars' %}fade show active{% endif %}"
       id="v-pills-seminars"
       role="tabpanel"
       aria-labelledby="v-pills-seminars-tab"
@@ -73,7 +73,7 @@
       {% include 'events/seminars_tab.html' %}
     </div>
     <div
-      class="tab-pane {% if active_tab == "sponsors" %}fade show active{% endif %}"
+      class="tab-pane {% if active_tab == 'sponsors' %}fade show active{% endif %}"
       id="v-pills-sponsors"
       role="tabpanel"
       aria-labelledby="v-pills-sponsors-tab"

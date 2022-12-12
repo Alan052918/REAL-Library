@@ -4,9 +4,8 @@
   <div class="col">
     <div class="card h-100">
       <div class="card-body">
-        <h5 class="card-title">
-          {{ individual_sponsor.first_name }} {{ individual_sponsor.last_name }}
-        </h5>
+        <h5 class="card-title">{{ individual_sponsor.first_name }}</h5>
+        <p>{{ individual_sponsor.last_name }}</p>
         <a
           href="/events/sponsors/{{ individual_sponsor.id }}/"
           class="stretched-link"
