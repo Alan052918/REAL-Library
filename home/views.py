@@ -16,7 +16,6 @@ def account(request):
     return render(request, "home/account.html", {"user": request.user})
 
 
-@unauthenticated_user
 def signup(request):
     form = CustomerCreationForm()
 
