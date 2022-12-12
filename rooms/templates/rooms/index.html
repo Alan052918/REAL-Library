@@ -9,13 +9,31 @@
 <h1 class="display-1 text-center">Rooms</h1>
 
 {% if room_list %}
-<ul>
-  {% for room in room_list %}
-  <li>
-    <a href="/rooms/{{ room.id }}/"
-      >ID: {{ room.id }} Capacity: {{ room.capacity }}</a
-    >
-  </li>
+{% for same_capacity_room_list in room_list %}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for room in same_capacity_room_list %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ room.capacity }} People
+        </h5>
+        <p>{{ room.location }}</p>
+        <a
+          href="/rooms/{{ room.id }}/"
+          class="stretched-link"
+        ></a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">ID: {{ room.id }}</small>
+      </div>
+    </div>
+  </div>
   {% endfor %}
-</ul>
-{% endif %} {% endblock content %}
+</div>
+
+<hr />
+{% endfor %}
+{% endif %}
+
+{% endblock content %}
