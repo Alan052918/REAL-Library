@@ -1,4 +1,5 @@
 {% extends "main.html" %} {% block content %}
+
 <h1 class="display-1 text-center">Signup</h1>
 
 <div class="container py-5 h-100">
@@ -7,17 +8,58 @@
       <div class="card bg-white text-black" style="border-radius: 1rem">
         <div class="card-body p-5 text-center">
           <form method="POST">
+            {% csrf_token %}
             <div class="mb-md-5 mt-md-4 pb-5">
-              {% csrf_token %} {{ form.as_p }}
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="username"
+                  >{{ user_form.username.label }}</label
+                >
+                {{ user_form.username }}
+              </div>
+
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="password1"
+                  >{{ user_form.password1.label }}</label
+                >
+                {{ user_form.password1 }}
+              </div>
+
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="password2"
+                  >{{ user_form.password2.label }}</label
+                >
+                {{ user_form.password2 }}
+              </div>
+
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="phone"
+                  >{{ customer_form.phone.label }}</label
+                >
+                {{ customer_form.phone }}
+              </div>
+
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="identity_type"
+                  >{{ customer_form.identity_type.label }}</label
+                >
+                {{ customer_form.identity_type }}
+              </div>
+
+              <div class="form-outline form-black mb-4">
+                <label class="form-label" for="identity_number"
+                  >{{ customer_form.identity_number.label }}</label
+                >
+                {{ customer_form.identity_number }}
+              </div>
 
               <button class="btn btn-outline-dark btn-lg px-5" type="submit">
                 sign up
               </button>
             </div>
 
-            <div>
+            <div class="container">
               {% for message in messages %}
-              <p id="messages">{{ message }}</p>
+              <div class="alert alert-primary" role="alert">{{ message }}</div>
               {% endfor %}
             </div>
 

@@ -1,5 +1,6 @@
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 
@@ -17,18 +18,38 @@ def account(request):
 
 
 def signup(request):
-    form = CustomerCreationForm()
+    user_form = UserCreationForm()
+    customer_form = CustomerCreationForm()
 
     if request.method == "POST":
-        form = CustomerCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        user_form = UserCreationForm(request.POST)
+        customer_form = CustomerCreationForm(request.POST)
+        if not user_form.is_valid() or not customer_form.is_valid():
+            messages.error(request, "Invalid form!")
+            for errors in user_form.errors.values():
+                for error in errors:
+                    messages.error(request, error)
+            for errors in customer_form.errors.values():
+                for error in errors:
+                    messages.error(request, error)
+        else:
+            user = user_form.save()
             group = Group.objects.get(name="customer")
-            user.groups.add(group)
-            messages.success(request, "Account created successfully!")
-            return redirect("/login/")
+            if not group:
+                messages.error(request, "Group not found!")
+            else:
+                user.groups.add(group)
+                customer = customer_form.save(commit=False)
+                customer.user = user
+                customer.save()
+                messages.success(request, "Account created successfully!")
+                return redirect("/login/")
 
-    return render(request, "home/signup.html", {"form": form})
+    return render(
+        request,
+        "home/signup.html",
+        {"user_form": user_form, "customer_form": customer_form},
+    )
 
 
 @unauthenticated_user

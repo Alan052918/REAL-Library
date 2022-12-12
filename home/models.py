@@ -15,4 +15,6 @@ class Customer(models.Model):
     identity_number = models.CharField(max_length=15)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return "{} {} {} {}".format(
+            self.user.username, self.phone, self.identity_type, self.identity_number
+        )
