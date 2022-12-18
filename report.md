@@ -24,6 +24,12 @@
     - [SSL/HTTPS](#sslhttps)
   - [Lesson Learned](#lesson-learned)
   - [Business Analysis with Project Data](#business-analysis-with-project-data)
+    - [1. FOR QUERY 1 (Table joins with at least 3 tables in join)](#1-for-query-1-table-joins-with-at-least-3-tables-in-join)
+    - [2. FOR QUERY 2 (MULTI-ROW SUBQUERY)](#2-for-query-2-multi-row-subquery)
+    - [3. FOR QUERY 3 (CORRELATED QUERY)](#3-for-query-3-correlated-query)
+    - [4. FOR QUERY 4 (SET-OPERATOR QUERY)](#4-for-query-4-set-operator-query)
+    - [5. FOR QUERY 5 (Query with in line view or WITH clause)](#5-for-query-5-query-with-in-line-view-or-with-clause)
+    - [6. FOR QUERY 6 (TOP-N)](#6-for-query-6-top-n)
   - [Extra Features](#extra-features)
 
 ## Executive Summary
@@ -720,6 +726,43 @@ I also bumpped into a few issues with Docker compose, Django constantly failed t
 Finally I learned to style the template pages with Bootstrap, which is a very powerful and popular CSS framework that could be used in a plug-and-play fashion.
 
 ## Business Analysis with Project Data
+
+### 1. FOR QUERY 1 (Table joins with at least 3 tables in join)
+
+**Business information to retrieve:**
+For each book that has a copy, display the name of the book, its topic name and the number of copies there are, in descending order of the number of copies.
+
+![Query 1](doc/img/sql_q1.png)
+
+### 2. FOR QUERY 2 (MULTI-ROW SUBQUERY)
+
+**Business information to retrieve:** Find all the book copies, of any book, in the library that are still available to borrow
+
+![Query 2](doc/img/sql_q2.png)
+
+### 3. FOR QUERY 3 (CORRELATED QUERY)
+
+**Business information to retrieve:** The following query finds exhibitions whose expense is greater than the average expense of all exhibitions, and lists its ID, name and topic name.
+
+![Query 3](doc/img/sql_q3.png)
+
+### 4. FOR QUERY 4 (SET-OPERATOR QUERY)
+
+**Business information to retrieve:** Find and display the ID number, type, start time and topic ID for the events, be it an exhibition or a seminar, that start earliest on the 1st of January, 2018.
+
+![Query 4](doc/img/sql_q4.png)
+
+### 5. FOR QUERY 5 (Query with in line view or WITH clause)
+
+**Business information to retrieve:** The following query finds, for the payments that were done using credit cards, the total amount paid or collected till now (useful for accounting).
+
+![Query 5](doc/img/sql_q5.png)
+
+### 6. FOR QUERY 6 (TOP-N)
+
+**Business information to retrieve:** Find the top 3 book copies that were borrowed for the longest amount of time, and display the book id, book name, copy id and the number of days it was borrowed for.
+
+![Query 6](doc/img/sql_q6.png)
 
 ## Extra Features
 
