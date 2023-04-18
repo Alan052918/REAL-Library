@@ -16,10 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from web.views import index,logins,regist,log_out
+from reallibrary import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path("", include("home.urls")),
     path("events/", include("events.urls")),
     path("inventory/", include("inventory.urls")),
     path("rooms/", include("rooms.urls")),
     path("admin/", admin.site.urls),
+    path("",index,name='home_page'),
+    path("regist/",regist,name='regist_page'),
+    path("login/",logins,name="log_in_page"),
+    path("logout/",log_out)
 ]
